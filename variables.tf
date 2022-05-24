@@ -60,9 +60,9 @@ variable "public_network_access_enabled" {
 }
 
 variable "api_server_authorized_ip_ranges" {
-  type        = string
+  type        = set(string)
   description = "(Optional) The IP ranges to allow for incoming traffic to the server nodes."
-  default     = "0.0.0.0/32"
+  default     = ["0.0.0.0/32"]
 }
 
 variable "sku_tier" {
