@@ -8,15 +8,17 @@ resource "tls_private_key" "main" {
 }
 
 resource "azurerm_kubernetes_cluster" "main" {
-  name                    = var.cluster_name != null ? var.cluster_name : var.prefix
-  kubernetes_version      = var.kubernetes_version
-  location                = data.azurerm_resource_group.main.location
-  resource_group_name     = data.azurerm_resource_group.main.name
-  node_resource_group     = var.node_resource_group
-  dns_prefix              = coalesce(var.dns_prefix, var.prefix, var.cluster_name)
-  sku_tier                = var.sku_tier
-  private_cluster_enabled = var.private_cluster_enabled
-  private_dns_zone_id     = var.private_dns_zone_id
+  name                            = var.cluster_name != null ? var.cluster_name : var.prefix
+  kubernetes_version              = var.kubernetes_version
+  location                        = data.azurerm_resource_group.main.location
+  resource_group_name             = data.azurerm_resource_group.main.name
+  node_resource_group             = var.node_resource_group
+  dns_prefix                      = coalesce(var.dns_prefix, var.prefix, var.cluster_name)
+  sku_tier                        = var.sku_tier
+  private_cluster_enabled         = var.private_cluster_enabled
+  private_dns_zone_id             = var.private_dns_zone_id
+  public_network_access_enabled   = var.public_network_access_enabled
+  api_server_authorized_ip_ranges = var.api_server_authorized_ip_ranges
 
   linux_profile {
     admin_username = var.admin_username
