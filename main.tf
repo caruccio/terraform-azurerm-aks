@@ -83,6 +83,7 @@ resource "azurerm_kubernetes_cluster" "main" {
 
   azure_active_directory_role_based_access_control {
     managed                = var.rbac_aad_managed
+    tenant_id              = var.rbac_aad_tenant_id
     admin_group_object_ids = var.rbac_aad_managed ? var.rbac_aad_admin_group_object_ids : null
     azure_rbac_enabled     = var.rbac_aad_managed ? var.enable_role_based_access_control : null
     client_app_id          = !var.rbac_aad_managed ? var.rbac_aad_client_app_id : null

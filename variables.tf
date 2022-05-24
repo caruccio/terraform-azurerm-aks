@@ -104,6 +104,12 @@ variable "rbac_aad_managed" {
   default     = true
 }
 
+variable "rbac_aad_tenant_id" {
+  type        = string
+  description = "(Optional) The Tenant ID used for Azure Active Directory Application. If this isn't specified the Tenant ID of the current Subscription is used."
+  default     = null
+}
+
 variable "client_id" {
   type        = string
   description = "(Optional) The Client ID (appId) for the Service Principal used for the AKS deployment."
