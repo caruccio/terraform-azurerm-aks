@@ -359,6 +359,13 @@ variable "log_analytics_solution_enabled" {
   default     = false
 }
 
+# microsoft Defender
+variable "microsoft_defender_enabled" {
+  type        = bool
+  description = "(Optional) Enables Microsoft Defender"
+  default     = false
+}
+
 # Application Gateway Ingress Controller
 variable "ingress_application_gateway_enabled" {
   type        = bool

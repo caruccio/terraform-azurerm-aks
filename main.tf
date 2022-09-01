@@ -132,6 +132,13 @@ resource "azurerm_kubernetes_cluster" "main" {
     }
   }
 
+  dynamic "microsoft_defender" {
+    for_each = (var.microsoft_defender_enabled && var.log_analytics_workspace_enabled) ? { "loop" = "once" } : {}
+    content {
+      log_analytics_workspace_id = azurerm_log_analytics_workspace.main[0].id
+    }
+  }
+
   tags = var.tags
 }
 
