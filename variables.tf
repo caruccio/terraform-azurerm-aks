@@ -328,6 +328,18 @@ variable "identity_ids" {
   default     = null
 }
 
+variable "workload_identity_enabled" {
+  type        = bool
+  description = "Specifies whether Azure AD Workload Identity should be enabled for the Cluster. Defaults to false."
+  default     = false
+}
+
+variable "oidc_issuer_enabled" {
+  type        = bool
+  description = "(Optional) Enable or Disable the OIDC issuer URL"
+  default     = false
+}
+
 # Log analytics
 variable "log_analytics_workspace_enabled" {
   type        = bool
