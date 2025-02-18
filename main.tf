@@ -49,6 +49,9 @@ resource "azurerm_kubernetes_cluster" "main" {
     tags                   = merge(var.tags, var.node_tags)
     max_pods               = var.max_pods
     enable_host_encryption = var.enable_host_encryption
+    upgrade_settings {
+      max_surge = "1"
+    }
   }
 
   dynamic "service_principal" {
